@@ -25,8 +25,6 @@ function Settings() {
         preConfirm: async (inputValue) => {
           try {
             const secretCode = process.env.REACT_APP_SECRET_CODE;
-            console.log(inputValue);
-            console.log(secretCode);
             if (inputValue === secretCode) {
               const res = await ApiUrl.post(`/user/makeadmin/${id}`);
               // Handle success
@@ -43,7 +41,7 @@ function Settings() {
               throw new Error("Invalid secret code");
             }
           } catch (error) {
-            console.log(error);
+
             setAdminChecked(false);
             Swal.showValidationMessage(`
               Request failed: ${error.response?.data || error.message}
@@ -80,7 +78,6 @@ function Settings() {
             localStorage.setItem("user", JSON.stringify({ ...JSON.parse(localStorage.getItem("user")), role: "user" }));
             Toast("success", res?.data?.message || 'Admin privilege removed successfully');
           } catch (error) {
-            console.log(error);
             setAdminChecked(true);
             Toast("error", error?.response?.data?.message || 'Something went wrong');
           }

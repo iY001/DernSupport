@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState();
-  console.log(isAuthenticated);
   const Signup = async (data) => {
     setLoading(true);
     try {
@@ -53,9 +52,8 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const res = await ApiUrl.post('/user/auth/signin', data);
-      console.log(res);
+
       const authorizationHeader = res?.data?.token;
-      console.log("Authorization header:", authorizationHeader);
       if (res.status === 200 || res.status === 201) {
         setLoading(false);
         cookies.set('token', authorizationHeader, { path: '/' })
@@ -65,7 +63,6 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         Toast('success', "Login successful");
         navigate('/');
-        console.log(authorizationHeader);
         setTimeout(() => {
           // window.location.reload();
         } , 2000);

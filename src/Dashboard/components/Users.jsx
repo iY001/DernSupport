@@ -296,7 +296,7 @@ const AddModel = ({ trigger, setTrigger, closeModal }) => {
     e.preventDefault();
     try {
       const res = await ApiUrl.post('/user', formData);
-      console.log(res);
+
       if (res.status === 201 || res.status === 200) {
         setTrigger(!trigger);
         Toast("success", res?.data?.message || 'User added successfully');
@@ -306,7 +306,6 @@ const AddModel = ({ trigger, setTrigger, closeModal }) => {
         Toast("error", res?.response?.data?.message || res.response?.data?.validationErrors?.[0]?.message || 'Something went wrong');
       }
     } catch (error) {
-      console.log(error);
       Toast("error", error?.response?.data?.message || error.response?.data?.validationErrors?.[0]?.message || 'Something went wrong');
     }
   };
@@ -542,7 +541,7 @@ const EditModel = ({ user, trigger, setTrigger, closeModal }) => {
 };
 
 const TicketsModel = ({ Tickets, closeModal , trigger , setTrigger }) => {
-  console.log(Tickets);
+
   const handleDelete = async (id) => {
     try {
       const response = await ApiUrl.delete(`/tickets/${id}`);

@@ -112,10 +112,10 @@ function Problems() {
   };
   const solveProblem = async (id, solution) => {
     const data = { solution };
-    console.log(id);
+
     try {
       const res = await ApiUrl.put(`/problems/solution/${id}` , data);
-      console.log(res);
+
       if (res.status === 200 || res.status === 201) {
         Toast("success", res?.data?.message || 'Problem solved successfully');
         setTrigger(!trigger);

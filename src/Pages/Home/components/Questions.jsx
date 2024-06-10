@@ -32,6 +32,7 @@ function Questions() {
             question.map((item, index) => {
               return (
                 <Dropdown
+                key = {index}
                 question = {item.question}
                 answer = {item.answer}
                 />

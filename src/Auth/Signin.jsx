@@ -18,10 +18,9 @@ function Signin() {
   const handleSubmit = (e) => {
     e.preventDefault()
     try {
-      console.log(formData)
       Signin(formData)
     } catch (error) {
-      console.log(error)
+      Toast('error', error.message || 'Something went wrong');
     }
   }
   return (

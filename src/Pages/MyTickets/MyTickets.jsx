@@ -13,7 +13,6 @@ function MyTickets() {
     const fetchData = async () => {
       try {
         const res = await ApiUrl.get('/tickets');
-        console.log(res);
         if (res.data.length === 0) {
           Toast('info','No tickets found');
         }

@@ -2,8 +2,6 @@ import React from 'react'
 import Swal from 'sweetalert2'
 
 function Toast(icon , title) {
-  console.log(icon , title)
-
   const Toast = Swal.mixin({
     toast: true,
     position: "bottom-end",

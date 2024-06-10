@@ -35,9 +35,8 @@ const SingleTicket = () => {
       }
     };
     fetchTicket();
-    console.log(ticket);
     setImagesFileNames(ticket?.images?.map(image => image.filename));
-    console.log(imagesFileNames);
+
   }, [id]);
 
 

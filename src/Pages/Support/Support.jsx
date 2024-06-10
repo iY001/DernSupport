@@ -69,7 +69,6 @@ function Support() {
     }
 
     setLoading(true); // Set loading state to true
-    console.log(formData.files);
     const data = new FormData();
     formData.files.forEach(file => data.append('files', file));
     data.append('fileName', formData.files[0]?.name.split('.').slice(0, -1).join('.'));
