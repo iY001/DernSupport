@@ -72,6 +72,7 @@ function Support() {
     const data = new FormData();
     formData.files.forEach(file => data.append('files', file));
     data.append('fileName', formData.files[0]?.name.split('.').slice(0, -1).join('.'));
+    data.append('size', formData.files[0]?.size);
     data.append('name', formData.name);
     data.append('email', formData.email);
     data.append('phone', formData.phone);
