@@ -385,8 +385,7 @@ const AddProblemModal = ({ trigger, setTrigger, closeModal , loading , setLoadin
       // Append files to FormData
       formData.files.forEach(file => {
         formDataToSend.append('files', file);
-        formDataToSend.append('fileName', formData.files[0]?.name.split('.').slice(0, -1).join('.'));
-        formDataToSend.append('size', formData.files[0]?.size);
+        formDataToSend.append('filename', formData.files[0]?.name.split('.').slice(0, -1).join('.'));
       });
 
       // Append other fields

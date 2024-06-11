@@ -27,10 +27,9 @@ function Support() {
     if (name === 'files') {
       const selectedFiles = Array.from(files);
       const validImageFiles = selectedFiles.filter(file => file.type.startsWith('image/'));
-
       setFormData((prevData) => ({
         ...prevData,
-        files: [...prevData.files, ...validImageFiles],
+        files: [...prevData.files, ...validImageFiles]
       }));
 
       const newPreviews = validImageFiles.map(file => URL.createObjectURL(file));
@@ -54,7 +53,7 @@ function Support() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!token){
+    if (!token) {
       Toast('error', 'Please Login First');
       return;
     }
@@ -62,24 +61,29 @@ function Support() {
       Toast('error', 'Please fill all the required fields');
       return;
     }
-
     if (!formData.email) {
       Toast('error', 'Please enter a valid email address');
       return;
     }
-
+  
     setLoading(true); // Set loading state to true
     const data = new FormData();
-    formData.files.forEach(file => data.append('files', file));
-    data.append('fileName', formData.files[0]?.name.split('.').slice(0, -1).join('.'));
-    data.append('size', formData.files[0]?.size);
+    
+    // Append each file individually to FormData
+    formData.files.forEach(file => {
+      data.append('files', file); // Append file itself
+      data.append('filename', file.name.split('.').slice(0, -1).join('.')); // Example handling for filename
+      
+    });
+  
+    // Append other form fields
     data.append('name', formData.name);
     data.append('email', formData.email);
     data.append('phone', formData.phone);
     data.append('subject', formData.subject);
     data.append('description', formData.description);
     data.append('type', formData.type); // Append type to FormData
-
+  
     try {
       const res = await ApiUrl.post('/tickets', data);
       const message = res.data.message;
