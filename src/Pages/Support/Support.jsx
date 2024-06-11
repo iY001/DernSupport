@@ -85,7 +85,11 @@ function Support() {
     data.append('type', formData.type); // Append type to FormData
   
     try {
-      const res = await ApiUrl.post('/tickets', data);
+      const res = await ApiUrl.post('/tickets', data , {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
       const message = res.data.message;
       if (res.status === 200 || res.status === 201) {
         Toast('success', 'Form submitted successfully');
