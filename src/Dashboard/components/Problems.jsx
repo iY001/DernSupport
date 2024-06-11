@@ -38,7 +38,7 @@ function Problems() {
   const [trigger, setTrigger] = useState(false);
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage] = useState(9); // Number of problems per page
+  const [perPage] = useState(6); // Number of problems per page
   const [searchTerm, setSearchTerm] = useState('');
   const [showEditModal, setShowEditModal] = useState(false);
   useEffect(() => {

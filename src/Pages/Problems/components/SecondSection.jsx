@@ -110,7 +110,7 @@ const SecondSection = () => {
                 <p className="text-center text-gray-600">No tickets found.</p>
               ) : (
                 currentItems.map(problem => (
-                  <div key={problem.id} className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer" onClick={() => openModal(problem)}>
+                  <div key={problem.id} className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer max-h-[500px]" onClick={() => openModal(problem)}>
                     <div className="p-4">
                       <h2 className="text-xl font-bold mb-2 flex justify-between items-center">
                         {problem.subject}
@@ -128,7 +128,7 @@ const SecondSection = () => {
                             key={index}
                             src={`${process.env.REACT_APP_BASE_URL}/images/${image.filename}`}
                             alt={image.filename}
-                            className="rounded-lg"
+                            className="rounded-lg max-h-[100px] object-cover"
                           />
                         ))}
                       </div>
@@ -199,7 +199,7 @@ const SecondSection = () => {
                     key={index}
                     src={`${process.env.REACT_APP_BASE_URL}/images/${image.filename}`}
                     alt={image.filename}
-                    className="rounded-lg"
+                    className="rounded-lg max-h-[400px] object-cover"
                   />
                 ))}
               </div>
