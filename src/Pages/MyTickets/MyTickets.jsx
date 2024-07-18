@@ -49,11 +49,11 @@ function MyTickets() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-center mb-8">My Tickets</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* {data
+          {data
             .filter((ticket) => ticket.userId === user.id)
             .map((ticket) => (
               <TicketCard key={ticket.id} ticket={ticket} />
-            ))} */}
+            ))}
           {
             data?.length > 0 && (
               <div className="md:col-start-1 lg:col-start-2 md:col-end-3 col-span-full w-full flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md ">
