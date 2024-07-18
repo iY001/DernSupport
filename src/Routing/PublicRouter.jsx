@@ -26,6 +26,10 @@ function PublicRouter() {
         Toast('error', 'Already Logged in')
       }
     }
+    if(!isAuthenticated && (location.pathname === '/mytickets' || location.pathname === '/tickets/:id' || location.pathname === '/settings')){
+      navigate('/signin')
+      Toast('error', 'Please Login First')
+    }
   },[isAuthenticated])
 
   // Check if the current path starts with "/dashboard"

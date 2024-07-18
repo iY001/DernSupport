@@ -14,7 +14,7 @@ function Dashboard() {
   return (
     <div className="flex h-screen bg-gray-100">
       <Aside showAside={showAside} setShowAside={setShowAside} />
-      <div className={`flex-1 flex flex-col transition-all duration-300 ${showAside ? 'ml-64' : 'ml-0'}`}>
+      <div className={`flex-1 flex flex-col transition-all duration-300 ${showAside ? 'hidden md:block ml-64' : 'block ml-0'}`}>
         <Navbar showAside={showAside} setShowAside={setShowAside} />
         <main className="flex-1 p-4 h-screen bg-gray-100">
           <Routes>
