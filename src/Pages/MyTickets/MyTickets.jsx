@@ -55,7 +55,7 @@ function MyTickets() {
               <TicketCard key={ticket.id} ticket={ticket} />
             ))}
           {
-            data?.length > 0 && (
+            data?.length === 0 && (
               <div className="md:col-start-1 lg:col-start-2 md:col-end-3 col-span-full w-full flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md ">
                 <p className="text-gray-600 mb-2">🎟️</p>
                 <p className="text-gray-600 text-lg font-semibold">No tickets found</p>
