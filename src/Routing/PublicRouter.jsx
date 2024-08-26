@@ -12,6 +12,9 @@ import SingleTicket from '../Pages/MyTickets/SingleTicket';
 import Dashboard from './../Dashboard/Dashboard';
 import Settings from '../Components/Settings';
 import PrivateRouter from './PrivateRouter';
+import Chat from '../Components/Chat';
+import FloatingSection from '../Components/FloatingSection';
+import About from '../Pages/About/About';
 
 function PublicRouter() {
   const isAuthenticated = localStorage.getItem('isAuthenticated')
@@ -45,6 +48,7 @@ function PublicRouter() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' exact element={<Home />} />
+        <Route path='/about' exact element={<About />} />
         <Route path='/support' element={<Support />} />
         <Route path='/problems' element={<Problems />} />
         {
@@ -54,6 +58,7 @@ function PublicRouter() {
            <Route path='/settings' element={<Settings />} />
            <Route path='/mytickets' element={<MyTickets />} /> 
            <Route path='/tickets/:id' element={<SingleTicket />} /> 
+           <Route path='/chat' element={<Chat />} />
           </>
            : location.pathname === '/mytickets' || location.pathname === '/tickets/:id' || location.pathname === '/settings' ? navigate('/signin') : null
         }
@@ -67,7 +72,7 @@ function PublicRouter() {
         isAuthenticated === "false" || isAuthenticated === null && (location.pathname === '/signin' || location.pathname === '/signup') ? null :
         !isDashboardRoute ? <Footer /> : null // Conditionally render Navbar based on the current path
       }
-      
+      <FloatingSection/>
     </>
   );
 }

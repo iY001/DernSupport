@@ -19,9 +19,10 @@ function Footer() {
             <div className="flex flex-col space-y-4">
               <h2 className="text-lg font-semibold">Quick Links</h2>
               <nav className="space-y-2 flex flex-col">
-                <a href="/" className="hover:text-gray-300">Home</a>
-                <a href="/support" className="hover:text-gray-300">Support</a>
-                <a href="/problems" className="hover:text-gray-300">Problems</a>
+                <Link to="/" className="hover:text-gray-300">Home</Link>
+                <Link to="/about" className="hover:text-gray-300">About</Link>
+                <Link to="/support" className="hover:text-gray-300">Support</Link>
+                <Link to="/problems" className="hover:text-gray-300">Problems</Link>
               </nav>
             </div>
             {/* Column 3: Contact Information */}

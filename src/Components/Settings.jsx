@@ -92,9 +92,9 @@ function Settings() {
   return (
     <>
     <div className='w-full h-[60vh]'>
-    <div className='w-[85%] mx-auto bg-gray-100 rounded-lg shadow-sm pb-4 my-10'>
+    <div className='w-[85%] mx-auto bg-gray-100 rounded-lg shadow-sm border-[2px] pb-4 my-10'>
       <h1 className='text-2xl text-primary py-4 text-center uppercase'>Settings</h1>
-      <hr className=' shadow-b-lg'/>
+      <hr className='border shadow-b-lg'/>
       <SwitchButton operation={'Admin'} helperText={role === "admin" ?  "Your Account Already An Admin":'Make yourself an admin'} isChecked={AdminChecked} setIsChecked={setAdminChecked} role={role}/>
     </div>
     </div>

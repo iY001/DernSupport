@@ -1,28 +1,38 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from './../Auth/AuthLayout';
-import { IoPersonSharp } from "react-icons/io5";
+import { IoPersonSharp, IoHomeSharp, IoHelpBuoySharp, IoWarningSharp, IoLogInSharp, IoLogOutSharp } from "react-icons/io5"; // Added additional sharp icons
+import { MdOutlineSupportAgent } from "react-icons/md";
 
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
   const [showAside, setShowAside] = useState(false);
-  const { logout } = useAuth()
-  const user = JSON.parse(localStorage.getItem('user'))
-  const isAuthenticated = localStorage.getItem('isAuthenticated')
+  const { logout } = useAuth();
+  const user = JSON.parse(localStorage.getItem('user'));
+  const isAuthenticated = localStorage.getItem('isAuthenticated');
   const links = [
     {
       name: "Home",
-      link: "/"
+      link: "/",
+      icon: <IoHomeSharp />
+    },
+    {
+      name: "About",
+      link: "/about",
+      icon: <IoPersonSharp />
     },
     {
       name: "Support",
-      link: "/support"
+      link: "/support",
+      icon: <MdOutlineSupportAgent  />
     },
     {
       name: "Problems",
-      link: "/problems"
+      link: "/problems",
+      icon: <IoWarningSharp />
     }
-  ]
+  ];
+
 
   return (
     <>
@@ -31,7 +41,7 @@ function Navbar() {
       {
         !isAuthenticated && (
           <>
-            <div className='w-[95%] mx-auto px-4 py-4 flex justify-between items-center '>
+            <div className='md:w-[95%] w-full mx-auto px-4 py-4 flex justify-between items-center md:static fixed bg-white'>
               <section className='w-1/2 flex flex-start items-center gap-4 '>
                 <img src="assets/Logo.png" className='h-12' alt="logo" />
                 <h1 className='font-semibold flex uppercase drop-shadow-2xl stroke-slate-50 stroke-2 md:text-2xl text-xl font-["Cairo"]'>
@@ -43,9 +53,9 @@ function Navbar() {
                   {
                     links.map((link) => {
                       return (
-                        <Link to={link.link} className='text-black font-["Ubuntu"] hover:underline hover:cursor-pointer' key={link.name}>
-                          {link.name}
-                        </Link>
+                        <NavLink to={link.link} className={({ isActive }) => (isActive ? 'flex items-center gap-2 text-primary font-semibold bg-gray-100 px-3 py-2 rounded-lg' : 'flex items-center gap-2 text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-lg')} key={link.name}>
+                          {link.icon} {link.name}
+                        </NavLink>
                       )
                     })
                   }
@@ -66,20 +76,20 @@ function Navbar() {
                 </button>
 
 
-                <div className={`h-full fixed ${showAside ? " md:w-72 w-full" : " w-0"} ${showAside ? "right-0" : "right-[-200px]"} top-[80px] bg-primary duration-300`}>
-                  <ul className='flex flex-col md:items-start justify-center items-start gap-4 py-4'>
+                <div className={`h-full z-50 fixed ${showAside ? " md:w-72 w-full" : " w-0"} ${showAside ? "right-0" : "right-[-200px]"} top-[80px] md:bg-white bg-gray-100 duration-300`}>
+                  <ul className='h-full flex flex-col md:items-start justify-start items-start gap-4 md:py-0 py-4'>
                     {
                       links.map((link) => {
                         return (
-                          <Link onClick={() => setShowAside(false)} to={link.link} className='h-10 w-full flex items-center text-white font-["Ubuntu"] hover:cursor-pointer text-xl p-6 hover:bg-white hover:text-primary' key={link.name}>
+                          <NavLink onClick={() => setShowAside(false)} to={link.link} className={(({ isActive }) => (isActive ? 'w-full px-4 py-2 font-["Ubuntu"] text-xl hover:cursor-pointer bg-primary text-white ' : 'w-full px-4 py-2 font-["Ubuntu"] text-xl hover:cursor-pointer text-gray-700 hover:bg-primary hover:text-white'))} key={link.name}>
                             {link.name}
-                          </Link>
+                          </NavLink>
                         )
                       })
                     }
-                    <section className='w-full px-10 flex justify-between gap-4'>
-                      <Link to="/signin" onClick={() => setShowAside(false)} className='w-28 h-10 rounded-[10px] px-4 flex justify-center items-center bg-white hover:bg-opacity-85 text-primary ring-2 ring-primary hover:bg-primary hover:text-white hover:ring-white font-semibold duration-300'>Login</Link>
-                      <Link to="/signup" onClick={() => setShowAside(false)} className='w-28 h-10 rounded-[10px] px-4 flex justify-center items-center bg-white hover:bg-opacity-85 text-primary ring-2 ring-primary hover:bg-primary hover:text-white hover:ring-white font-semibold duration-300'>Register</Link>
+                    <section className='w-full px-4 flex flex-col justify-between gap-4 '>
+                      <Link to="/signin" onClick={() => setShowAside(false)} className='w-full rounded-sm h-10 px-4 flex justify-center items-center bg-white hover:bg-opacity-85 text-primary ring-2 ring-primary hover:bg-primary hover:text-white hover:ring-white font-semibold duration-300'>Login</Link>
+                      <Link to="/signup" onClick={() => setShowAside(false)} className='w-full rounded-sm h-10 px-4 flex justify-center items-center bg-white hover:bg-opacity-85 text-primary ring-2 ring-primary hover:bg-primary hover:text-white hover:ring-white font-semibold duration-300'>Register</Link>
                     </section>
                   </ul>
                 </div>
@@ -94,7 +104,7 @@ function Navbar() {
       {
         isAuthenticated === "true" && (
           <>
-            <div className={`w-full mx-auto px-4 py-4 flex justify-between items-center ${showAside ? 'md:bg-primary bg-opacity-50' : ''}`}>
+            <div className={`w-full mx-auto px-4 py-4 flex justify-between items-center ${showAside ? 'md:bg-gray-100 bg-opacity-50' : ''}`}>
               <section className='w-1/2 flex flex-start items-center gap-4 '>
                 <img src="assets/Logo.png" className='h-12' alt="logo" />
                 <h1 className='font-semibold text-primary text-nowrap flex flex-col uppercase drop-shadow-2xl stroke-slate-50 stroke-2 text-2xl font-["Cairo"]'>
@@ -106,9 +116,9 @@ function Navbar() {
                   {
                     links.map((link) => {
                       return (
-                        <Link to={link.link} className='text-black font-["Ubuntu"] hover:cursor-pointer px-4 py-2 hover:bg-gray-100 bg-opacity-25 active:bg-gray-100 rounded-xl' key={link.name}>
-                          {link.name}
-                        </Link>
+                        <NavLink to={link.link} className={({ isActive }) => (isActive ? 'flex items-center gap-2 text-primary font-semibold bg-gray-100 px-3 py-2 rounded-lg' : 'flex items-center gap-2 text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-lg')} key={link.name}>
+                          {link.icon}  {link.name}
+                        </NavLink>
                       )
                     })
                   }
@@ -128,14 +138,14 @@ function Navbar() {
                 </button>
 
 
-                <div className={`h-full z-50 fixed ${showAside ? " md:w-72 w-full" : " w-0"} ${showAside ? "right-0" : "right-[-200px]"} top-[95px] bg-primary duration-300`}>
+                <div className={`h-full z-50 fixed ${showAside ? " md:w-72 w-full" : " w-0"} ${showAside ? "right-0" : "right-[-200px]"} top-[95px] md:bg-white bg-gray-100 duration-300`}>
                   <ul className='h-full flex flex-col md:items-start justify-center items-start gap-4 md:py-0 py-4'>
                     {
                       links.map((link) => {
                         return (
-                          <Link onClick={() => setShowAside(false)} to={link.link} className='h-10 w-full flex items-center text-white font-["Ubuntu"] hover:cursor-pointer text-xl p-6 hover:bg-white hover:text-primary' key={link.name}>
+                          <NavLink onClick={() => setShowAside(false)} to={link.link} className={(({ isActive }) => (isActive ? 'w-full px-4 py-2 font-["Ubuntu"] text-xl hover:cursor-pointer bg-primary text-white ' : 'w-full px-4 py-2 font-["Ubuntu"] text-xl hover:cursor-pointer text-gray-700 hover:bg-primary hover:text-white'))} key={link.name}>
                             {link.name}
-                          </Link>
+                          </NavLink>
                         )
                       })
                     }
@@ -153,7 +163,7 @@ function Navbar() {
                             user?.role === "admin" && (
                               <>
                                 <li>
-                                  <Link onClick={() => setShowAside(false)} to={"/dashboard"} className="block px-4 py-2 text-black hover:bg-primary hover:text-white">Dashboard</Link>
+                                  <NavLink onClick={() => setShowAside(false)} to={"/dashboard"} className="block px-4 py-2 text-black hover:bg-primary hover:text-white">Dashboard</NavLink>
                                 </li>
                               </>
                             )
