@@ -9,9 +9,9 @@ function Home() {
   return (
     <>
     <FirstSection/>
-    <SecondSection/>
-    <ThirdSection/>
     <ForthSection/>
+    <ThirdSection/>
+    <SecondSection/>
     <Questions/>
     </>
   )

@@ -291,9 +291,10 @@ const AddModel = ({ trigger, setTrigger, closeModal }) => {
       [e.target.name]: e.target.value,
     });
   };
-
+  const [loading , setLoading] = useState(false)
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const res = await ApiUrl.post('/user', formData);
 
@@ -305,6 +306,7 @@ const AddModel = ({ trigger, setTrigger, closeModal }) => {
       else {
         Toast("error", res?.response?.data?.message || res.response?.data?.validationErrors?.[0]?.message || 'Something went wrong');
       }
+      setLoading(false)
     } catch (error) {
       Toast("error", error?.response?.data?.message || error.response?.data?.validationErrors?.[0]?.message || 'Something went wrong');
     }
@@ -315,7 +317,7 @@ const AddModel = ({ trigger, setTrigger, closeModal }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
         <div className="fixed inset-0 bg-black opacity-50"></div>
 
-        <div className="relative mx-auto lg:min-w-[600px] md:min-w-[400px] min-w-[300px] bg-white rounded-lg shadow-lg">
+        <div className="relative mx-auto lg:min-w-[600px] md:min-w-[400px] min-w-[400px] bg-white rounded-lg shadow-lg">
           {/* Modal content */}
           <div className="flex justify-between px-4 items-center py-3 pr-4 border-b-2 border-gray-200 rounded-t-xl">
             <h1 className="text-lg text-primary font-['Cairo']">
@@ -404,7 +406,8 @@ const AddModel = ({ trigger, setTrigger, closeModal }) => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-primary border border-transparent rounded-md hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                  disabled={loading}
+                  className="w-full inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-primary border border-transparent rounded-md hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
                 >
                   Add User
                 </button>
@@ -423,7 +426,7 @@ const EditModel = ({ user, trigger, setTrigger, closeModal }) => {
     email: user.email,
     role: user.role,
   });
-
+  const [loading , setLoading] = useState(false);
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -433,6 +436,7 @@ const EditModel = ({ user, trigger, setTrigger, closeModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await ApiUrl.put(`/user/${user.id}`, formData);
       if (res.status === 200 || res.status === 201) {
@@ -442,6 +446,7 @@ const EditModel = ({ user, trigger, setTrigger, closeModal }) => {
       } else {
         Toast('error', 'Failed to update user');
       }
+      setLoading(false);
     } catch (error) {
       console.error('Error updating user:', error);
       Toast('error', 'Failed to update user');
@@ -453,7 +458,7 @@ const EditModel = ({ user, trigger, setTrigger, closeModal }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
         <div className="fixed inset-0 bg-black opacity-50"></div>
 
-        <div className="relative mx-auto lg:min-w-[600px] md:min-w-[400px] min-w-[300px] bg-white rounded-lg shadow-lg">
+        <div className="relative mx-auto lg:min-w-[600px] md:min-w-[400px] min-w-[400px] bg-white rounded-lg shadow-lg">
           {/* Modal content */}
           <div className="flex justify-between px-4 items-center py-3 pr-4 border-b-2 border-gray-200 rounded-t-xl">
             <h1 className="text-lg text-primary font-['Cairo']">

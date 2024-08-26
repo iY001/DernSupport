@@ -6,6 +6,10 @@ import PublicRouter from './Routing/PublicRouter';
 import Toast from './Alerts/Toast';
 import { useEffect } from 'react';
 import  Cookies  from 'universal-cookie';
+import ScrollToTopOnPageChange from './Components/ScrollToTop';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 function App() {
   const isAuthenticated = localStorage.getItem('isAuthenticated')
   const navigate = useNavigate();
@@ -13,6 +17,10 @@ function App() {
   const location = useLocation();
 
   const token = cookies.get('token')
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+  
   useEffect(()=>{
     if(isAuthenticated){
       if(window.location.pathname === '/signin' || window.location.pathname === '/signup'){
@@ -37,8 +45,11 @@ function App() {
       localStorage.removeItem('isAuthenticated');
     }
   }, [token]);
+
+
   return (
     <>
+    <ScrollToTopOnPageChange />
       <Routes>
         <Route path='/signin' element={<Signin />} />
         <Route path='/signup' element={<Signup />} />

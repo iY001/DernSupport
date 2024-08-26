@@ -74,7 +74,6 @@ const Chat = () => {
       <div
         className="min-h-[570px] max-h-[calc(100vh-300px)] flex-1 overflow-y-auto p-6"
         style={{
-          backgroundImage: `url('/assets/whatsapp-bg.png')`,
           backgroundSize: 'cover', // Ensure the image covers the container
           backgroundRepeat: 'repeat', // Repeats the image like WhatsApp
           backgroundPosition: 'center', // Center the background image

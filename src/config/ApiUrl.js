@@ -2,11 +2,18 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
-const token = cookies.get('token');
-
 const ApiUrl = axios.create({
   baseURL: `${process.env.REACT_APP_BASE_URL}`,
-  headers: token ? { 'Authorization': token } : {},
 });
 
+ApiUrl.interceptors.request.use((config) => {
+  const token = cookies.get('token');
+
+  if (token) {
+    config.headers = {
+      Authorization: `${token}`,
+    };
+  }
+  return config;
+})
 export default ApiUrl;
