@@ -41,7 +41,7 @@ function Navbar() {
       {
         !isAuthenticated && (
           <>
-            <div className='md:w-[95%] w-full mx-auto px-4 py-4 flex justify-between items-center md:static sticky top-0 bg-white z-[50]'>
+            <div className='md:w-[95%] w-full mx-auto px-4 py-4 flex justify-between items-center md:static sticky top-0 bg-white z-[40]'>
               <section className='w-1/2 flex flex-start items-center gap-4 '>
                 <img src="assets/Logo.png" className='h-12' alt="logo" />
                 <h1 className='font-semibold flex uppercase drop-shadow-2xl stroke-slate-50 stroke-2 md:text-2xl text-xl font-["Cairo"]'>
@@ -104,7 +104,7 @@ function Navbar() {
       {
         isAuthenticated === "true" && (
           <>
-            <div className={`w-full md:static sticky top-0 mx-auto px-4 py-4 flex justify-between items-center bg-white z-[50] `}>
+            <div className={`w-full md:static sticky top-0 mx-auto px-4 py-4 flex justify-between items-center bg-white z-[40] `}>
               <section className='w-1/2 flex flex-start items-center gap-4 bg-white'>
                 <img src="assets/Logo.png" className='h-12' alt="logo" />
                 <h1 className='font-semibold text-primary text-nowrap flex flex-col uppercase drop-shadow-2xl stroke-slate-50 stroke-2 text-2xl font-["Cairo"]'>

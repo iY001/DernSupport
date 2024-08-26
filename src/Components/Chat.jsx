@@ -51,7 +51,7 @@ const Chat = () => {
 
 
   return (
-    <div className="flex flex-col h-full max-w-lg mx-auto my-8 border border-gray-200 rounded-xl shadow-xl bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300">
+    <div className="flex flex-col h-full max-w-lg mx-auto my-8 border border-gray-200 rounded-xl shadow-xl bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 z-[50]">
       <div className="py-4 px-6 border-b border-gray-300 bg-white rounded-t-xl">
         <div className="flex items-center justify-between">
           {/* AI pfp */}
@@ -72,7 +72,7 @@ const Chat = () => {
       </div>
 
       <div
-        className="min-h-[600px] max-h-[calc(100vh-300px)] flex-1 overflow-y-auto p-6"
+        className="min-h-[570px] max-h-[calc(100vh-300px)] flex-1 overflow-y-auto p-6"
         style={{
           backgroundImage: `url('/assets/whatsapp-bg.png')`,
           backgroundSize: 'cover', // Ensure the image covers the container

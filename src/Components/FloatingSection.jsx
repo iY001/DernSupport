@@ -6,8 +6,8 @@ function FloatingSection() {
   const [showChat, setShowChat] = useState(false);
 
   return (
-    <div className="relative flex items-center justify-center w-full">
-      <div className={`fixed md:mx-4  m-0 bottom-10 right-0 w-full max-w-sm transition-all transtion-[200] ease-in duration-300 ${showChat ? 'translate-y-0' : 'translate-y-[500vh]'}`}>
+    <div className="relative flex items-center justify-center w-full z-[40]">
+      <div className={`fixed md:mx-4 m-0 bottom-10 right-0 w-full max-w-sm transition-all transtion-[200] ease-in duration-300 ${showChat ? 'translate-y-0' : 'translate-y-[500vh]'}`}>
         <Chat />
       </div>
       <button
