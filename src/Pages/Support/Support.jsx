@@ -71,11 +71,9 @@ function Support() {
     
     // Append each file individually to FormData
     formData.files.forEach(file => {
-      data.append('files', file); // Append file itself
-      data.append('filename', file.name.split('.').slice(0, -1).join('.')); // Example handling for filename
+      data.append('files', file , file.name); // Append file itself
       
     });
-  
     // Append other form fields
     data.append('name', formData.name);
     data.append('email', formData.email);
@@ -83,6 +81,7 @@ function Support() {
     data.append('subject', formData.subject);
     data.append('description', formData.description);
     data.append('type', formData.type); // Append type to FormData
+    console.log(formData.files);
   
     try {
       const res = await ApiUrl.post('/tickets', data , {

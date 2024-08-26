@@ -7,6 +7,7 @@ import { IoIosSearch } from "react-icons/io";
 import Tickets from './Tickets';
 import { Link } from 'react-router-dom';
 const Users = () => {
+  const [loading , setLoading] = useState(false)
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(6); // Number of users per page
@@ -119,6 +120,7 @@ const Users = () => {
   };
 
   const handleAction = (action, user) => {
+    setLoading(true);
     const handleDelete = async (userId) => {
       try {
         const res = await ApiUrl.delete(`/user/${userId}`);
@@ -140,6 +142,7 @@ const Users = () => {
     if (action === 'delete') {
       handleDelete(user.id);
     }
+    setLoading(false);
   };
 
   // Modal logic for editing user (to be implemented)
@@ -231,6 +234,7 @@ const Users = () => {
                         <div className="absolute right-0 z-50 mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-lg">
                           <button
                             type="button"
+                            disabled={loading}
                             className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-primary font-['Cairo']"
                             onClick={() => handleAction('edit', selectedUser)}
                           >
@@ -239,6 +243,7 @@ const Users = () => {
                           </button>
                           <button
                             type="button"
+                            disabled={loading}
                             className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-red-500 font-['Cairo']"
                             onClick={() => handleAction('delete', selectedUser)}
                           >
