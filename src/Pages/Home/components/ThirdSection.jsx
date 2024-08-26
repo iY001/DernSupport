@@ -6,7 +6,7 @@ function ThirdSection() {
   const { user } = useAuth();
   
   return (
-    <div className="w-full flex flex-col justify-center items-center text-center py-16 bg-white">
+    <div className="w-full flex flex-col justify-center items-center text-center py-16 px-6 bg-white">
       <section className="flex flex-col items-center gap-8 w-full max-w-4xl p-12 bg-gray-100 border rounded-3xl shadow-md">
         <h1 className="text-3xl font-bold text-gray-700 font-['Segoe UI', 'Roboto', 'Cairo', sans-serif]">
           The Perfect Solution to Your IT Problems

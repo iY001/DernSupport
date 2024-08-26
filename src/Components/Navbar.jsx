@@ -41,14 +41,14 @@ function Navbar() {
       {
         !isAuthenticated && (
           <>
-            <div className='md:w-[95%] w-full mx-auto px-4 py-4 flex justify-between items-center md:static fixed bg-white'>
+            <div className='md:w-[95%] w-full mx-auto px-4 py-4 flex justify-between items-center md:static sticky top-0 bg-white z-[50]'>
               <section className='w-1/2 flex flex-start items-center gap-4 '>
                 <img src="assets/Logo.png" className='h-12' alt="logo" />
                 <h1 className='font-semibold flex uppercase drop-shadow-2xl stroke-slate-50 stroke-2 md:text-2xl text-xl font-["Cairo"]'>
                   Dern Support
                 </h1>
               </section>
-              <section className='w-1/2 lg:flex hidden flex-row justify-end items-center'>
+              <section className='w-1/2 lg:flex hidden flex-row justify-end items-center z-[50]'>
                 <ul className='flex justify-end items-center gap-12'>
                   {
                     links.map((link) => {
@@ -104,15 +104,15 @@ function Navbar() {
       {
         isAuthenticated === "true" && (
           <>
-            <div className={`w-full mx-auto px-4 py-4 flex justify-between items-center ${showAside ? 'md:bg-gray-100 bg-opacity-50' : ''}`}>
-              <section className='w-1/2 flex flex-start items-center gap-4 '>
+            <div className={`w-full md:static sticky top-0 mx-auto px-4 py-4 flex justify-between items-center bg-white z-[50] `}>
+              <section className='w-1/2 flex flex-start items-center gap-4 bg-white'>
                 <img src="assets/Logo.png" className='h-12' alt="logo" />
                 <h1 className='font-semibold text-primary text-nowrap flex flex-col uppercase drop-shadow-2xl stroke-slate-50 stroke-2 text-2xl font-["Cairo"]'>
                   Dern <span className='text-black uppercase drop-shadow-2xl stroke-slate-50 stroke-2 text-2xl font-["Cairo"]'>Support</span>
                 </h1>
               </section>
-              <section className='w-1/2 lg:flex hidden flex-row justify-end items-center'>
-                <ul className='flex justify-end items-center gap-12'>
+              <section className='w-1/2 lg:flex hidden flex-row justify-end items-center z-[50] bg-white'>
+                <ul className='flex justify-end items-center gap-12 bg-white'>
                   {
                     links.map((link) => {
                       return (
@@ -127,7 +127,7 @@ function Navbar() {
                   </section>
                 </ul>
               </section>
-              <section className='w-1/2 lg:hidden flex flex-row justify-end items-center '>
+              <section className='w-1/2 lg:hidden flex flex-row justify-end items-center bg-white'>
                 <button onClick={() => setShowAside(!showAside)} className='text-3xl relative flex flex-col justify-center cursor-pointer duration-300 gap-2 pl-4'>
                   {/* {
                 showAside ? <RiCloseLine className='text-white'/> : <RiMenu2Line  className='text-white'/>  

@@ -166,8 +166,8 @@ const Users = () => {
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Users</h2>
         <button onClick={openModal} className="bg-primary hover:bg-opacity-70 text-white font-bold py-2 px-4 rounded">Add User</button>
       </section>
-      <div className="overflow-x-scroll md:min-w-full max-w-[310px] mx-auto h-full">
-        <div className="shadow lg:overflow-x-hidden  md:min-w-full max-w-[310px]  overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
+      <div className="overflow-x-scroll md:min-w-full mx-auto h-full">
+        <div className="shadow lg:overflow-x-hidden  md:min-w-full max-w-[420px]  overflow-x-scroll border-b border-gray-200 sm:rounded-lg">
           <table className="lg:min-w-full lg:overflow-x-auto w-fit overflow-x-scroll z-10 divide-y bg-white divide-gray-200">
             <div className="relative lg:w-[50%] w-full py-2">
               <div className="absolute inset-y-0 left-7 flex items-center pointer-events-none">
