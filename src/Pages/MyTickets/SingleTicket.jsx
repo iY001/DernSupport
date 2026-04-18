@@ -16,7 +16,6 @@ const SingleTicket = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [editingReplyId, setEditingReplyId] = useState(null);
-  const [imagesfilenames , setImagesfilenames] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
 
@@ -35,8 +34,6 @@ const SingleTicket = () => {
       }
     };
     fetchTicket();
-    setImagesfilenames(ticket?.images?.map(image => image.filename));
-
   }, [id]);
 
 

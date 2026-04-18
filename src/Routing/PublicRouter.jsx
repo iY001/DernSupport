@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
-import { Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-dom'
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom'
 import Home from '../Pages/Home/Home'
 import Problems from '../Pages/Problems/Problems'
 import Footer from './../Components/Footer';
 import Navbar from './../Components/Navbar';
 import Toast from '../Alerts/Toast'
-import { useAuth } from '../Auth/AuthLayout'
 import Support from '../Pages/Support/Support'
 import MyTickets from '../Pages/MyTickets/MyTickets';
 import SingleTicket from '../Pages/MyTickets/SingleTicket';
-import Dashboard from './../Dashboard/Dashboard';
 import Settings from '../Components/Settings';
 import PrivateRouter from './PrivateRouter';
 import Chat from '../Components/Chat';
@@ -22,9 +20,9 @@ function PublicRouter() {
   const navigate = useNavigate();
   const location = useLocation(); // Get the current location
 
-  useEffect(()=>{
+  useEffect(() => {
     if(isAuthenticated){
-      if(window.location.pathname === '/signin' || window.location.pathname === '/signup'){
+      if(location.pathname === '/signin' || location.pathname === '/signup'){
         navigate('/home')
         Toast('error', 'Already Logged in')
       }
@@ -33,7 +31,7 @@ function PublicRouter() {
       navigate('/signin')
       Toast('error', 'Please Login First')
     }
-  },[isAuthenticated])
+  }, [isAuthenticated, location.pathname, navigate])
 
   // Check if the current path starts with "/dashboard"
   const isDashboardRoute = location.pathname.startsWith('/dashboard');
@@ -41,7 +39,7 @@ function PublicRouter() {
   return (
     <>
       {
-        isAuthenticated === "false" || isAuthenticated === null && (location.pathname === '/signin' || location.pathname === '/signup') ? null :
+        ((isAuthenticated === "false" || isAuthenticated === null) && (location.pathname === '/signin' || location.pathname === '/signup')) ? null :
         !isDashboardRoute ? <Navbar /> : null // Conditionally render Navbar based on the current path
       }
       
@@ -69,7 +67,7 @@ function PublicRouter() {
         user?.role === "admin" ? <PrivateRouter/> : null
       }
             {
-        isAuthenticated === "false" || isAuthenticated === null && (location.pathname === '/signin' || location.pathname === '/signup') ? null :
+        ((isAuthenticated === "false" || isAuthenticated === null) && (location.pathname === '/signin' || location.pathname === '/signup')) ? null :
         !isDashboardRoute ? <Footer /> : null // Conditionally render Navbar based on the current path
       }
       <FloatingSection/>

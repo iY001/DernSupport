@@ -31,7 +31,7 @@ function FirstSection({ loading, setLoading }) {
       }
     };
     fetchData();
-  }, []);
+  }, [setLoading]);
 
   useEffect(() => {
     if (!loading) {
