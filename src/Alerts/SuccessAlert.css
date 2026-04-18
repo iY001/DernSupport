@@ -1,0 +1,64 @@
+/* Success Alert Styles */
+
+.success-alert {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #95E1D3 0%, #4ECDC4 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(149, 225, 211, 0.3);
+  animation: slideDown 0.3s ease-out;
+}
+
+.success-alert-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.success-alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.success-alert-message {
+  flex: 1;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.success-alert-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.success-alert-close:hover {
+  opacity: 0.8;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

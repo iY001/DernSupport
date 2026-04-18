@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+:root {
+  --ds-bg: #f6f8fc;
+  --ds-surface: #ffffff;
+  --ds-surface-soft: #f1f5ff;
+  --ds-border: #d9e2f1;
+  --ds-text: #12233d;
+  --ds-text-muted: #5f6f89;
+  --ds-primary: #0f6bff;
+  --ds-primary-strong: #0d53c9;
+  --ds-success: #0f9d7a;
+  --ds-warning: #f59e0b;
+  --ds-danger: #e64646;
+  --ds-shadow: 0 20px 45px rgba(12, 30, 65, 0.08);
+  --ds-shadow-soft: 0 8px 20px rgba(12, 30, 65, 0.06);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', 'Cairo', sans-serif;
+  color: var(--ds-text);
+  background : white;
+
+  background:
+    radial-gradient(1200px 600px at -10% -10%, #dcebff 0%, transparent 45%),
+    radial-gradient(900px 500px at 120% 0%, #e7f7f1 0%, transparent 45%),
+    /* var(--ds-bg); */
+}
+
+@layer base {
+  html {
+    font-family: 'Manrope', 'Cairo', sans-serif;
+  }
+}
+
+@layer components {
+  .ds-page {
+    @apply min-h-screen px-4 sm:px-6 lg:px-8 py-6 md:py-8;
+  }
+
+  .ds-shell {
+    @apply w-full max-w-7xl mx-auto;
+  }
+
+  .ds-panel {
+    background: var(--ds-surface);
+    border: 1px solid var(--ds-border);
+    box-shadow: var(--ds-shadow-soft);
+    @apply rounded-2xl;
+  }
+
+  .ds-card {
+    background: linear-gradient(160deg, #ffffff, #f9fbff);
+    border: 1px solid var(--ds-border);
+    box-shadow: var(--ds-shadow-soft);
+    @apply rounded-xl p-5 transition duration-300;
+  }
+
+  .ds-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ds-shadow);
+  }
+
+  .ds-title {
+    @apply text-2xl md:text-3xl font-extrabold tracking-tight;
+    color: var(--ds-text);
+  }
+
+  .ds-subtitle {
+    @apply text-sm md:text-base;
+    color: var(--ds-text-muted);
+  }
+
+  .ds-input {
+    @apply w-full rounded-xl px-4 py-2.5 text-sm bg-white transition duration-200 outline-none;
+    border: 1px solid var(--ds-border);
+    color: var(--ds-text);
+  }
+
+  .ds-input:focus {
+    border-color: #8ab4ff;
+    box-shadow: 0 0 0 4px rgba(15, 107, 255, 0.12);
+  }
+
+  .ds-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .ds-btn-primary {
+    @apply ds-btn text-white;
+    background: linear-gradient(135deg, var(--ds-primary), #3a8eff);
+    box-shadow: 0 10px 24px rgba(15, 107, 255, 0.3);
+  }
+
+  .ds-btn-primary:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, var(--ds-primary-strong), var(--ds-primary));
+  }
+
+  .ds-btn-secondary {
+    @apply ds-btn;
+    border: 1px solid var(--ds-border);
+    color: var(--ds-text);
+    background: #fff;
+  }
+
+  .ds-btn-secondary:hover {
+    background: #f8fbff;
+  }
+
+  .ds-badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+    border: 1px solid var(--ds-border);
+    background: #f7faff;
+    color: var(--ds-text-muted);
+  }
+
+  .ds-loading {
+    @apply rounded-xl p-6 text-sm;
+    border: 1px dashed #c5d5ee;
+    background: #f8fbff;
+    color: var(--ds-text-muted);
+  }
+
+  .ds-empty {
+    @apply rounded-xl p-8 text-center;
+    border: 1px dashed #c5d5ee;
+    background: linear-gradient(180deg, #fbfdff, #f3f8ff);
+    color: var(--ds-text-muted);
+  }
+
+  .ds-table {
+    @apply w-full text-sm;
+  }
+
+  .ds-table th {
+    @apply text-left text-xs font-semibold uppercase tracking-wide px-4 py-3;
+    color: #5a6d8d;
+    background: #f7faff;
+  }
+
+  .ds-table td {
+    @apply px-4 py-3 align-middle;
+    border-top: 1px solid #edf2fb;
+    color: #223654;
+  }
+
+  .ds-table tr:hover {
+    background: #f9fbff;
+  }
+
+  .ds-fade-up {
+    animation: ds-fade-up 380ms ease both;
+  }
+}
+
+@keyframes ds-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
